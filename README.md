@@ -1,4 +1,4 @@
-Infographic Site
+Aframe Prototype
 ==========
 
 The site showcases market research information for each market the client is in.
