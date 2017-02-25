@@ -1,0 +1,630 @@
+use_reset('meyer')
+@import 'fonts.styl'
+
+body
+
+	font-family 'San Francisco Text'
+	background-color	#f7f7f7
+	height 		auto
+	margin		0
+	width		100%
+	-webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+
+
+a
+	color: inherit
+	text-decoration none
+
+#app	
+	text-decoration	none
+	height 			auto
+	width			100%
+	background-color 	#f7f7f7
+
+.header-nav
+	width	100%
+	background-color	#383838
+	color 		#a4a4a4
+	position	relative
+	display		inline-block
+	text-align	center
+	height 		123px
+
+
+
+
+.header-nav ul li
+	display 	inline-block
+	position	relative
+	width		25%
+	height 		50px
+	cursor		pointer
+	font-size 	14px
+	box-sizing 	border-box
+
+
+	@media screen and (max-width: 560px)
+		font-size	11px	
+
+
+.header-nav ul li a  
+	display		inline-block
+	text-decoration		none
+	line-height		1.3em
+	text-transform 	uppercase
+	font-weight 	500
+	width		100%
+	height 		50px
+	margin		auto
+	top 	0
+	bottom 	0
+	right 	0
+	left 	0
+	position 	absolute
+
+
+	@media screen and (max-width: 560px)
+		width	83%
+
+.hider
+	display none
+	opacity 0
+
+	@media screen and (max-width: 560px)
+		display block
+		opacity 0
+
+.header-nav ul li span
+	width 	100%
+	position 	absolute
+	top 	0
+	bottom 	0
+	left 	0
+	right 	0
+	margin 	auto
+
+
+	@media screen and (max-width: 560px)
+		width 	100%
+
+
+.header-nav ul li:nth-child(1) span 
+	height 	11px 	
+
+.header-nav ul li:nth-child(2) span
+	height 	11px
+
+	@media screen and (max-width: 426px)
+		height 	26px
+
+
+.header-nav ul li:nth-child(3) span 
+	height 	11px
+
+	@media screen and (max-width: 345px)
+		height 	26px
+
+
+.header-nav ul li:nth-child(4) span 
+	height 	11px
+
+	@media screen and (max-width: 426px)
+		height 	26px
+
+
+.spanmiles
+	font-size 	14px
+	width 68%
+
+	@media screen and (max-width: 560px)
+		font-size 	14px
+
+	@media screen and (max-width: 320px)
+		font-size 	12px
+		width 	62%
+
+	@media screen and (min-width: 1440px)
+		font-size 	16px
+
+
+.nav-trim
+	background-color	#383838
+	position	relative 
+	text-align	center
+	height 		3px
+	padding 	0
+	list-style-type		none
+	margin 		0
+	font-size 	0
+	display		flex
+
+.nav-trim div
+	display 	inline-block
+	position	relative
+	width		25%
+	height 		3px
+	cursor		pointer
+	padding 	0
+	margin 		0
+	font-size	17px
+
+.barblock div div
+	width: 30% 
+	paddingLeft: 10px
+	boxSizing :  border-box
+	borderRight : solid 15px #fff
+	borderLeft 	: solid 15px #fff
+	display 	: inline-block
+	backgroundColor : #fc4bd1
+	position	: 	 relative
+	height 		: 	10px
+
+.active
+	color 		red
+
+.offgrey
+	color 		black
+
+
+.blkstroke
+	border-top 		solid 0.5px #2a2a2a
+	border-left		solid 0.5px #2a2a2a
+
+.piecont 
+	width  		350px
+	text-align 	center
+	position 	relative
+	height 		353px
+	display 	inline-block
+	vertical-align 	middle
+	overflow 	hidden
+	top 		15px
+ 
+	@media screen and (max-width: 320px)
+		width 	300px
+		height 	300px
+
+.dataethnic
+	position 	relative
+	width 		100%
+	height 		auto
+	top 		48%
+	-ms-transform: translateY(-48%)
+	-webkit-transform: translateY(-48%)
+	-moz-transform: translateY(-48%)
+	-o-transform: translateY(-48%)
+	transform 	translateY(-48%)
+
+
+.dataos
+	position 	relative
+	width 		100%
+	height 		auto
+	top 		48%
+	-ms-transform: translateY(-48%)
+	-webkit-transform: translateY(-48%)
+	-moz-transform: translateY(-48%)
+	-o-transform: translateY(-48%)
+	transform 	translateY(-48%)
+
+	@media screen and (min-width: 768px)
+		width 	35%
+		left 	60%
+
+	@media screen and (min-width: 1440px)
+		left 	58%
+		
+
+.svgbluepie
+	display 	inline-block
+	position 	absolute
+	top 		0
+	left 		0
+	width 		350px
+	overflow 	hidden
+
+	@media screen and (max-width: 320px)
+		width 	300px
+
+
+
+
+.svggreenpie
+	display 	inline-block
+	position 	absolute
+	top 		0
+	left 		0
+	width 		350px
+	overflow 	hidden
+
+	@media screen and (max-width: 320px)
+		width 	300px
+
+	@media screen and (min-width: 768px)
+		width 	300px
+
+
+
+.hide-legend
+	display 	none
+
+text
+	display 	none
+
+.bluetab
+	background-color 	#039fda
+	color 		#000000
+	border-top 		solid 1px #039fda
+	border-right	solid 1px #039fda
+	border-left		solid 1px #039fda
+
+.pinktab
+	background-color 	#fc4bd1
+	color 		#000000
+	border-top 		solid 1px #fc4bd1
+	border-right	solid 1px #fc4bd1
+	border-left		solid 1px #fc4bd1
+
+.orangetab
+	background-color 	#f08817
+	color 		#000000
+	border-top 		solid 1px #f08817
+	border-right	solid 1px #f08817
+	border-left		solid 1px #f08817
+
+.greentab
+	background-color 	#4cb02d
+	color 		#000000
+	border-top 		solid 1px #56ca31
+	border-right	solid 1px #56ca31
+	border-left		solid 1px #56ca31
+
+
+
+.cultr div div
+	background-color  	#039fda
+	letter-spacing 		2px
+
+
+
+.lonu
+	width 		100%
+	position	relative
+	display		block
+	font-size	16px
+	text-align 	center
+	background-color 	#fff
+	padding-bottom 80px
+	box-shadow  0 4px 15px rgba(0, 0, 0, 0.2), 0 -4px 7px rgba(0, 0, 0, 0.2)
+	margin-bottom	100px
+
+
+.lonu div div
+	background-color 	#fc4bd1
+	letter-spacing		2px
+
+.tpmf 
+	span:nth-child(2)
+		font-size: 	16px
+
+.avline p
+
+	text-align	center
+	width 		70%
+	position 	relative
+	text-transform 		uppercase
+	color 		#fff
+	font-size 	20px
+	margin 		0
+	padding 	0
+	font-weight		200!important
+	top 	13px
+	display 	inline-block
+
+.blockr
+	display 	block
+
+
+
+
+.locot div div
+	background-color 	#f08817
+	letter-spacing		2px
+
+
+
+.stateb div div
+	background-color 	#4cb02d
+	letter-spacing		2px
+
+.potpie ul
+	padding 	0
+	margin 		0
+	width 		100%!important
+	background-color 	#eaf5e7
+	height 		auto
+	text-align 	center!important
+	list-style-type 	none
+	padding-bottom 		60px
+	padding-top			30px
+	color 		#56ca31
+	padding-left 	0!important
+
+
+.potpie li
+	padding 	0
+	margin 		0
+	width 		87%
+	text-align	center
+	font-size	18px
+	position 	relative
+	top 		20px
+	left 		6%
+	padding-bottom  10px
+	color 		#4cb02d
+
+
+.metap ul
+	padding 	0
+	margin 		0
+	width 		100%!important
+	height 		auto
+	text-align 	center!important
+	list-style-type 	none
+	padding-bottom 		0px
+	padding-top			0px
+	color 		#fff
+	padding-left 	0!important
+
+.metap li
+	padding 	0
+	margin 		0
+	width 		87%
+	text-align	center
+	font-size	15px
+	position 	relative
+	left 		6%
+	padding-bottom  5px
+	color 		#4cb02d
+
+
+	@media screen and (min-width: 768px)
+		height 	13px
+
+
+
+
+.legendcont
+
+	width 	100%
+	position 	relative
+	display		block
+	font-size 	16px
+	text-align 	center
+	height 		30px
+	top 		0
+
+	@media screen and (min-width: 768px)
+			height	0
+			top 	396px
+			position 	absolute
+
+.legfont
+
+	position 	relative
+	display 	block
+	font-size 	15px
+	color 	#ccc
+	margin 	0
+	padding 0
+	float	right
+	margin-right	20px
+	top 10px
+
+	@media screen and (min-width: 768px)
+			font-size	13px
+			
+.killer
+	display 	none!important
+
+
+
+.trenddiv
+	text-align 	center
+	border-top 	solid 1px #ccc
+	box-sizing  border-box
+
+	@media screen and (min-width: 768px)
+		height 	81px
+
+
+.trenddiv div:nth-child(1) 
+	border-right 	solid 1px #ccc
+	border-bottom 	solid 1px #ccc
+	box-sizing	 	border-box
+	width 	50%
+
+	@media screen and (min-width: 768px)
+		width 	33%
+
+
+.trenddiv div:nth-child(2) 
+	width 	50%
+	box-sizing  border-box
+	border-bottom 	solid 1px #ccc
+
+	@media screen and (min-width: 768px)
+		width 	33%
+
+
+
+.trenddiv div:nth-child(3) 
+	width 	100%
+	box-sizing  border-box
+
+	@media screen and (min-width: 768px)
+		width 	33%
+		border-left 	solid 1px #ccc
+		border-bottom 	solid 1px #ccc
+
+
+.greenline
+	top 	-10px
+
+.greytab
+	background-color 	#ececec
+	color 				#ccc
+	border-bottom 		2px solid #ccc
+	box-sizing 			border-box
+
+
+
+	border-right 		1px solid #fff
+	border-left 		1px solid #fff
+
+	@media screen and (min-width: 768px)
+		border-bottom 		0px solid #ccc
+
+
+		box-shadow inset 0 1px 0 0 #fff
+		box-shadow inset 0 -1px 0 0 #fff
+
+		border-right 	1px solid #ccc
+		border-left 	0px solid #fff
+
+.whitetab
+	background-color 	#fff
+	color 				#4cb02d				
+	box-sizing 			border-box
+
+
+
+	border-right 		3px solid #ccc
+	border-left 		3px solid #ccc
+
+	@media screen and (min-width: 768px)
+
+		box-shadow inset 0 2px 0 0 #ccc, inset 0 -2px 0 0 #ccc
+
+
+		border-right 	1px solid #ccc
+		border-left 	0px solid #ccc
+
+
+.fakewhitetab
+
+	background-color 	#fff
+	color 				#4cb02d				
+	box-sizing 			border-box
+	border-top 		1px solid #ccc
+
+
+.fpcont
+	width 	350px
+	test-align 	center
+	position 	relative
+	height 		423px
+	display 	inline-block
+	overflow 	hidden
+
+	@media screen and (max-width: 320px)
+			width 	300px
+			height 	300px
+
+	@media screen and (min-width: 768px)
+			left 	-8.5%
+			top 	35px
+
+.picont
+	margin-bottom 	130px
+	border-radius 	330px
+	border 			15px solid #ececec
+	display 		inline-block
+	position 		relative
+	top 			24px
+
+
+	@media screen and (min-width: 768px)
+			margin-bottom 	50px
+			top 			74px
+
+
+
+		
+.mileyear
+	font-size 	31px
+
+
+
+.numcol
+	counter-reset 	item
+	list-style-type none
+
+.numcol li
+	display 	block
+
+.numcol li:before
+	content 	counter(item) " "
+	counter-increment 	item
+	font-weight 	300!important
+
+	@media screen and (min-width: 1440px)
+		font-size 	20px
+
+.bluehead
+	@media screen and (min-width: 768px)
+		margin-bottom 	70px
+
+	@media screen and (min-width: 1440px)
+		margin-bottom 	120px
+
+
+.pinkbar
+	margin-bottom 	20px
+
+	@media screen and (min-width: 768px)
+		margin-bottom 	70px
+
+	@media screen and (min-width: 1440px)
+		margin-bottom 	120px
+
+
+.pinkbartwo
+	margin-bottom 	50px
+	
+	@media screen and (min-width: 768px)
+		margin-bottom 	70px
+
+	@media screen and (min-width: 1440px)
+		margin-bottom 	80px
+
+
+
+.blueheadtwo
+	@media screen and (min-width: 768px)
+		margin-bottom 	70px
+
+	@media screen and (min-width: 1440px)
+		margin-bottom 	90px
+
+
+.lister
+	width 	90%
+
+	@media screen and (min-width: 768px)
+		width 	80%
+
+	@media screen and (min-width: 1440px)
+		width 	89%
+
+
+
+
+
+
+
+
+
+
+
