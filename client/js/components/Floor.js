@@ -20,7 +20,7 @@ export default class Floor extends Component {
 	render(){
 
 		return (
-              <a-plane material="repeat: 10 10" src="#ground" height="100" width="100" rotation="-90 0 0"></a-plane>
+              <a-plane color="#666" height="100" width="100" rotation="-90 0 0"></a-plane>
 		);
 
     }

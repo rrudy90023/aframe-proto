@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import 'aframe'
-
+import {Sky} from 'aframe-react';
 
 
 export default class Skymain extends Component {

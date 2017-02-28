@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var PROD = JSON.parse(process.env.PROD_ENV || '0');
 
+
 module.exports = {
 	context: __dirname + '/client',
 	devtool: PROD ? false : 'cheap-source-map',
