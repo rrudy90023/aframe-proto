@@ -12,7 +12,7 @@ import Fadelight from './Fadelight'
 
 import Leaphands from 'aframe-leap-hands';
 import THREE from 'three'
-require('aframe-leap-hands').registerAll();
+
 
 export default class Parent extends Component {
 
@@ -37,7 +37,7 @@ export default class Parent extends Component {
 
 						
 						<Model/>
-						<a-entity position="2 0 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
+						<a-entity dynamic-body="shape: #model" position="2 0 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
 						</a-entity>
 						
 

@@ -32,6 +32,10 @@ module.exports = {
 	module: {
 		loaders: [
 			{
+				test: /\.json$/, loader: "json-loader"
+			},
+
+			{
 				test: /\.styl$/,
 				loader: 'style-loader!css-loader!stylus-loader'
 			},
@@ -44,6 +48,7 @@ module.exports = {
 				test: /\.html$/,
 				loader: 'file?name=[name].[ext]',
 			},
+			
 			{ test: /\.(png|woff|woff2|eot|ttf|svg|obj|mtl|dae|jpg)$/, loader: 'url-loader?limit=100000' }
 		]
 	}
