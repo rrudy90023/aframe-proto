@@ -24,16 +24,19 @@ module.exports = {
 		}
 	},
 
+
+
+
 	plugins: PROD ? [
 		new webpack.optimize.UglifyJsPlugin({minimize: true}),
 		new webpack.DefinePlugin({ "process.env": { NODE_ENV: JSON.stringify("production") } })
 	] : [],
 
 	module: {
+
+
+
 		loaders: [
-			{
-				test: /\.json$/, loader: "json-loader"
-			},
 
 			{
 				test: /\.styl$/,
@@ -49,7 +52,32 @@ module.exports = {
 				loader: 'file?name=[name].[ext]',
 			},
 			
-			{ test: /\.(png|woff|woff2|eot|ttf|svg|obj|mtl|dae|jpg)$/, loader: 'url-loader?limit=100000' }
-		]
+			{ 
+				test: /\.(png|woff|woff2|eot|ttf|svg|obj|mtl|dae|jpg)$/, 
+				loader: 'url-loader?limit=100000' },
+
+			{
+				test: /\.json$/, 
+				use: 'json-loader',
+				loader: 'json-loader'
+			},
+
+
+
+		],
+
+		resolve: {
+			// you can now require('file') instead of require('file.js')
+			modulesDirectories: ['node_modules', 'src'],
+			extensions: ['', '.js', '.json']
+		},
+
+
+		noParse:[
+			
+			    /node_modules\/aframe\/dist\/aframe-master.js/, 
+      			/node_modules\/cannon\/build\/cannon.js/,
+
+		],
 	}
 }

@@ -11,8 +11,7 @@ import 'reset.styl/index.styl'
 import '../css/global.styl'
 
 
-require('aframe-leap-hands').registerAll();
-// require('aframe-physics-system').registerAll();
+
 
 ReactDOM.render(
 	<Router>

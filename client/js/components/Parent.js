@@ -12,7 +12,9 @@ import Fadelight from './Fadelight'
 
 import Leaphands from 'aframe-leap-hands';
 import THREE from 'three'
-
+require('aframe-leap-hands').registerAll();
+import Physics from 'aframe-leap-hands'
+require('aframe-physics-system').registerAll();
 
 export default class Parent extends Component {
 
@@ -30,7 +32,7 @@ export default class Parent extends Component {
 
 		return (
 			<div style={{'fontSize': '20px', 'padding': '0', 'margin':'0', 'position': 'relative', 'top':'0', 'backgroundColor':'#ffffff', 'textAlign':'center'}}>
-				    <a-scene>
+				    <a-scene physics="debug: true">
 						
 						
 						<Floor/>
