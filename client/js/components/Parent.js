@@ -39,12 +39,12 @@ export default class Parent extends Component {
 
 						
 						<Model/>
-						<a-entity dynamic-body position="2 0 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
+						<a-entity dynamic-body position="2 15 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
 						</a-entity>
 						
 
 						
-						<a-entity camera="userHeight: 1.6" look-controls position="0 0 0" rotation="0 180 0">
+						<a-entity camera look-controls position="10 10 -10" rotation="0 180 0">
 							<a-entity leap-hand="hand: left"></a-entity>
 							<a-entity leap-hand="hand: right"></a-entity>
 						</a-entity>
