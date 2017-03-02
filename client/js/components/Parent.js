@@ -35,11 +35,11 @@ export default class Parent extends Component {
 				    <a-scene physics="debug: true">
 						
 						
-						<Floor/>
+						
 
 						
 						<Model/>
-						<a-entity dynamic-body="shape: #model" position="2 0 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
+						<a-entity dynamic-body position="2 0 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
 						</a-entity>
 						
 
@@ -49,7 +49,7 @@ export default class Parent extends Component {
 							<a-entity leap-hand="hand: right"></a-entity>
 						</a-entity>
 
-
+						<a-plane static-body color="#666" height="100" width="100" rotation="-90 0 0"></a-plane>
 
 						<Skymain/>
 						
