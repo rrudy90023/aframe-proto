@@ -33,7 +33,7 @@
     "react-three": "^0.9.7",
     "react-waypoint": "^1.2.3",
     "superagent": "^1.4.0",
-    "three": "^0.84.0"
+    "three": "latest"
   },
   "devDependencies": {
     "babel-core": "^6.6.4",

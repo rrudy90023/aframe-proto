@@ -28,7 +28,40 @@ export default class Parent extends Component {
 
 
 
+
 	render(){
+
+		AFRAME.registerComponent('holdable', {
+		schema: {activeColor: {default: 'orange'}},
+		init: function () {
+			
+			this.physics =    /** @type {AFRAME.System}     */ this.el.sceneEl.systems.physics;
+			this.constraint = /** @type {CANNON.Constraint} */ null;
+			this.handID =     /** @type {number} */            null;
+
+			console.log(this.handID)
+
+			this.el.addEventListener('leap-holdstart', this.onHoldStart.bind(this));
+			this.el.addEventListener('leap-holdstop', this.onHoldStop.bind(this));
+		},
+		onHoldStart: function (e) {
+			console.log("ACTIVATE hold start");
+			if (this.handID) return;
+			this.originalColor = this.el.getAttribute('material').color;
+			this.el.setAttribute('material', 'color', this.data.activeColor);
+			this.constraint = new CANNON.LockConstraint(this.el.body, e.detail.body);
+			this.physics.world.addConstraint(this.constraint);
+			this.handID = e.detail.handID;
+		},
+		onHoldStop: function (e) {
+			console.log("ACTIVATE hold stop");
+			if (e.detail.handID !== this.handID) return;
+			this.el.setAttribute('material', 'color', this.originalColor);
+			this.physics.world.removeConstraint(this.constraint);
+			this.constraint = null;
+			this.handID = null;
+		}
+		});
 
 		return (
 			<div style={{'fontSize': '20px', 'padding': '0', 'margin':'0', 'position': 'relative', 'top':'0', 'backgroundColor':'#ffffff', 'textAlign':'center'}}>
@@ -36,17 +69,18 @@ export default class Parent extends Component {
 						
 						
 						
-
-						
 						<Model/>
-						<a-entity dynamic-body position="2 15 5" rotation="0 -90 0" obj-model="obj: #model;" scale="0.2 0.2 0.2" material="wireframe: true">
+						<a-entity holdable dynamic-body="shape: sphere" position="0.125 0.13 -0.5" rotation="0 -90 0" obj-model="obj: #model;" scale=".2 .2 .2" material="wireframe: false">
 						</a-entity>
 						
 
+						<a-box width="0.25" height="0.25" depth="0.25" position="0.125 0.13 -0.5" color="blue" holdable dynamic-body="shape: box"></a-box>
 						
-						<a-entity camera look-controls position="10 10 -10" rotation="0 180 0">
-							<a-entity leap-hand="hand: left"></a-entity>
-							<a-entity leap-hand="hand: right"></a-entity>
+
+						
+						<a-entity camera="near: 0.01" position="0 0 0" look-controls>
+							<a-entity leap-hand="hand: left; enablePhysics: true"></a-entity>
+							<a-entity leap-hand="hand: right; enablePhysics: true"></a-entity>
 						</a-entity>
 
 						<a-plane static-body color="#666" height="100" width="100" rotation="-90 0 0"></a-plane>

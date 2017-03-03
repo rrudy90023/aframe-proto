@@ -5,7 +5,8 @@ import 'aframe'
 import {Animation, Entity, Scene} from 'aframe-react';
 import Modelpath from '../../assets/images/bear-obj.obj'
 import Modelmat from '../../assets/images/bear-obj.mtl'
-
+import Physics from 'aframe-leap-hands'
+require('aframe-physics-system').registerAll();
 
 
 
@@ -29,7 +30,7 @@ export default class Phonemodel extends Component {
 		return (
 			<div style={{'backgroundColor':''}}>
 		
-				<a-asset-item id="model" src={Modelpath} onClick={()=> {console.log('clicked!');}}></a-asset-item>
+				<a-asset-item dynamic-body id="model" src={Modelpath} onClick={()=> {console.log('clicked!');}}></a-asset-item>
 				
 			</div>
 		);
