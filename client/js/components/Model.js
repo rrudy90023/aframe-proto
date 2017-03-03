@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import 'aframe'
-import {Animation, Entity, Scene} from 'aframe-react';
+
 import Modelpath from '../../assets/images/bear-obj.obj'
 import Modelmat from '../../assets/images/bear-obj.mtl'
 import Physics from 'aframe-leap-hands'

@@ -75,9 +75,8 @@ module.exports = {
 
 		noParse:[
 			
-			    /node_modules\/aframe\/dist\/aframe-master.js/, 
-      			/node_modules\/cannon\/build\/cannon.js/,
-
+			    /node_modules\/aframe\/dist\/aframe-master.js/,
+				/node_modules\/prebuiltlib\/dist\/build.js/
 		],
 	}
 }

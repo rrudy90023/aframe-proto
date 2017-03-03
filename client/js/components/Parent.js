@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
-import 'aframe'
+import AFRAME from 'aframe'
 
 
 import Model from './Model'
@@ -64,7 +64,7 @@ export default class Parent extends Component {
 		});
 
 		return (
-			<div style={{'fontSize': '20px', 'padding': '0', 'margin':'0', 'position': 'relative', 'top':'0', 'backgroundColor':'#ffffff', 'textAlign':'center'}}>
+			<div style={{'fontSize': '20px', 'position': 'relative', 'backgroundColor':'#ffffff', 'textAlign':'center'}}>
 				    <a-scene physics="debug: true">
 						
 						
