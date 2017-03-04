@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import AFRAME from 'aframe'
 
-
+import Modelpath from '../../assets/images/bear-obj.obj'
 import Model from './Model'
 import Skymain from './Skymain'
 import Floorpath from '../../assets/images/floor.jpg'
@@ -64,21 +64,21 @@ export default class Parent extends Component {
 		});
 
 		return (
-			<div style={{'fontSize': '20px', 'position': 'relative', 'backgroundColor':'#ffffff', 'textAlign':'center'}}>
-				    <a-scene physics="debug: true">
+		
+				    <a-scene physics="debug: true" vr-mode-ui="true">
 						
 						
 						
-						<Model/>
-						<a-entity holdable dynamic-body="shape: sphere" position="0.125 0.13 -0.5" rotation="0 -90 0" obj-model="obj: #model;" scale=".2 .2 .2" material="wireframe: false">
+						<a-asset-item dynamic-body id="model" src={Modelpath} onClick={()=> {console.log('clicked!');}}></a-asset-item>
+						<a-entity holdable dynamic-body="shape: sphere" position="0.125 0.13 -0.5" rotation="0 -90 0" obj-model="obj: #model;" color="blue" scale=".05 .05 .05" material="wireframe: false">
 						</a-entity>
 						
 
-						<a-box width="0.25" height="0.25" depth="0.25" position="0.125 0.13 -0.5" color="blue" holdable dynamic-body="shape: box"></a-box>
+						
 						
 
 						
-						<a-entity camera="near: 0.01" position="0 0 0" look-controls>
+						<a-entity camera position="0.49 1 0.28" look-controls>
 							<a-entity leap-hand="hand: left; enablePhysics: true"></a-entity>
 							<a-entity leap-hand="hand: right; enablePhysics: true"></a-entity>
 						</a-entity>
@@ -92,7 +92,7 @@ export default class Parent extends Component {
 					</a-scene>
 					
 				
-			</div>
+
 		);
 	}
 }
