@@ -69,24 +69,24 @@ export default class Parent extends Component {
 						
 						
 						
-						<a-asset-item dynamic-body id="model" src={Modelpath} onClick={()=> {console.log('clicked!');}}></a-asset-item>
-						<a-entity holdable dynamic-body="shape: sphere" position="0.125 0.13 -0.5" rotation="0 -90 0" obj-model="obj: #model;" color="blue" scale=".05 .05 .05" material="wireframe: false">
+						<a-asset-item dynamic-body id="model" src={Modelpath}></a-asset-item>
+						<a-entity holdable dynamic-body="shape: sphere" position="0.125 0.13 -0.5" rotation="0 -90 0" obj-model="obj: #model;" color="blue" scale=".02 .02 .02" material="wireframe: false">
 						</a-entity>
 						
 
+
 						
 						
 
 						
-						<a-entity camera position="0.49 1 0.28" look-controls>
+						<a-entity camera position="0.30 0.46 0" look-controls>
 							<a-entity leap-hand="hand: left; enablePhysics: true"></a-entity>
 							<a-entity leap-hand="hand: right; enablePhysics: true"></a-entity>
 						</a-entity>
 
 						<a-plane static-body color="#666" height="100" width="100" rotation="-90 0 0"></a-plane>
 
-						<Skymain/>
-						
+						<Skymain/>						
 
 
 					</a-scene>
