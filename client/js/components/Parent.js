@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import AFRAME from 'aframe'
 
-import Modelpath from '../../assets/images/bear-obj.obj'
+import Modelpath from '../../assets/images/polar_bear.obj'
 import Model from './Model'
 import Skymain from './Skymain'
 import Floorpath from '../../assets/images/floor.jpg'
 import Floor from './Floor'
 import Fadelight from './Fadelight'
-
+import Orbit from 'aframe-orbit-controls-component'
 import Leaphands from 'aframe-leap-hands';
 import THREE from 'three'
 require('aframe-leap-hands').registerAll();
@@ -68,18 +68,18 @@ export default class Parent extends Component {
 				    <a-scene physics="debug: true" vr-mode-ui="true">
 						
 						
-						
-						<a-asset-item dynamic-body id="model" src={Modelpath}></a-asset-item>
-						<a-entity holdable dynamic-body="shape: sphere" position="0.125 0.13 -0.5" rotation="0 -90 0" obj-model="obj: #model;" color="blue" scale=".02 .02 .02" material="wireframe: false">
+				
+						<a-asset-item id="model" src={Modelpath}></a-asset-item>
+						<a-entity holdable dynamic-body="shape: box" position="0.125 0.13 -0.5" rotation="0 0 0" obj-model="obj: #model;" color="blue" scale=".05 .05 .05" material="wireframe: false">
 						</a-entity>
-						
+	
+
+						<a-box holdable dynamic-body position="0.29 0.35 1.03" scale="0.5 0.5 0.5" color="yellow"></a-box>
 
 
-						
-						
 
 						
-						<a-entity camera position="0.30 0.46 0" look-controls>
+						<a-entity camera position="0.30 0.46 0" rotation="0 90 0" wasd-controls look-controls>
 							<a-entity leap-hand="hand: left; enablePhysics: true"></a-entity>
 							<a-entity leap-hand="hand: right; enablePhysics: true"></a-entity>
 						</a-entity>

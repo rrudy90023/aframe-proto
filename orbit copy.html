@@ -1,5 +1,5 @@
 <head>
-  <title>MAL</title>
+  <title>A-Frame using a Camera with Orbit Controls</title>
   <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/master/dist/aframe-orbit-controls-component.min.js"></script>
 </head>
@@ -22,14 +22,11 @@
             mouse-cursor="">
         </a-entity>
 
-        <a-asset-item id="model" src="./client/assets/images/polar_bear.obj"></a-asset-item>
-        <a-entity id="target" obj-model="obj: #model;" scale=".2 .2 .2" position="0 0 0" material="color: #fff"></a-entity>
+
+        <a-entity id="target" geometry="primitive: box" scale="1 1 1" position="0 0 0" material="color: #cc0000"></a-entity>
 
 
         <a-sky color="#000000"></a-sky>
 
     </a-scene>
 </body>
-
-
-

@@ -5,7 +5,7 @@ import 'aframe'
 
 
 import Parent from './Parent'
-
+import Fixed from './Fixed'
 
 export default class Shell extends Component {
 
@@ -21,7 +21,12 @@ export default class Shell extends Component {
 
 		return (
 			<div>
-				<Parent/>
+				{(this.props.location.pathname === "/") ?
+				<Parent/> :
+				(this.props.location.pathname === "/fixed") ?
+				<Fixed/> : 
+				null
+				}
 			</div>
 		);
 	}
