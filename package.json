@@ -9,10 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aframe": "0.5.0",
+    "aframe": "^0.5.0",
     "aframe-leap-hands": "^0.7.0",
     "aframe-orbit-controls-component": "^1.0.0",
     "aframe-physics-system": "1.3.0",
+    "aframe-react": "^3.5.0",
     "babel-plugin-object-assign": "^1.2.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-react": "^6.3.13",
@@ -26,12 +27,13 @@
     "numeral": "^1.5.3",
     "object-assign": "^4.0.1",
     "radium": "^0.16.6",
-    "react": "15.1.0",
-    "react-dom": "15.1.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
     "react-router": "^1.0.2",
     "superagent": "^1.4.0",
     "three": "^0.83.0",
-    "three-to-cannon": "^1.0.4"
+    "three-to-cannon": "^1.0.4",
+    "webpack": "1.14.0"
   },
   "peerDependencies": {
     "aframe": "0.5.0",
