@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import AFRAME from 'aframe'
 
-import Modelpath from '../../assets/images/polar_bear.obj'
+import Modelpath from '../../assets/images/polarbear-obj.obj'
 import Model from './Model'
 import Skymain from './Skymain'
 import Floorpath from '../../assets/images/floor.jpg'

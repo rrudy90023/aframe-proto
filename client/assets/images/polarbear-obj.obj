@@ -1,5 +1,6 @@
-# Blender v2.77 (sub 0) OBJ File: 'polar_bear.blend'
+# Blender v2.77 (sub 0) OBJ File: 'polarbear-obj.blend'
 # www.blender.org
+mtllib polarbear-obj.mtl
 o BaseMesh_Untitled
 v -0.000001 4.659601 5.000000
 v 2.860582 5.918052 5.000001

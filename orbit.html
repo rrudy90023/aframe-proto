@@ -7,7 +7,7 @@
 
 
 <script>
-console.log(document.getElementById('model'))
+
 </script>
 
 
@@ -29,8 +29,14 @@ console.log(document.getElementById('model'))
             mouse-cursor="">
         </a-entity>
 
-        <a-asset-item id="model" src="./client/assets/images/polar_bear.obj"></a-asset-item>
-        <a-entity id="target" obj-model="obj: #model;" scale=".2 .2 .2" position="0 0 0" material="color: #fff"></a-entity>
+
+
+
+        <a-asset>
+        <a-asset-item id="modmtl" src="./client/assets/images/iPhone_6.mtl"></a-asset-item>
+        <a-asset-item id="model" src="./client/assets/images/iPhone_6.obj"></a-asset-item>
+        </a-asset>
+        <a-entity id="target" obj-model="obj: #model; mtl: #modmtl" scale=".2 .2 .2" position="0 0 0"></a-entity>
 
 
         <a-sky color="#000000"></a-sky>

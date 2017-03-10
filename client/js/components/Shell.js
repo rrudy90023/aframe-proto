@@ -6,6 +6,7 @@ import 'aframe'
 
 import Parent from './Parent'
 import Fixed from './Fixed'
+import Phone from './Phone'
 
 export default class Shell extends Component {
 
@@ -25,6 +26,8 @@ export default class Shell extends Component {
 				<Parent/> :
 				(this.props.location.pathname === "/fixed") ?
 				<Fixed/> : 
+				(this.props.location.pathname === "/phone") ?
+				<Phone/> :
 				null
 				}
 			</div>
