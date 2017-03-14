@@ -12,15 +12,17 @@ import Modelpath from '../../assets/images/polarbear-obj.obj'
 
 
 let swipeDirection;
-
+let appRoot;
 
 export default class Fixed extends Component {
 
 	constructor(props) {
 		super(props)
+		appRoot = this;
 		this.state = {
-			color: "color: blue",
-			texture: carpet
+			color: "color: white",
+			texture: carpet,
+			rotate: "0 100 0"
 		};
 	}
 
@@ -43,6 +45,14 @@ export default class Fixed extends Component {
 		});
 	}
 
+	moveHorizontal(number){
+		console.log("moving left or right", number);
+		var lefrt = number*10;
+		this.setState({
+			rotate: "0 " + lefrt + " 5"
+		})
+	}
+
 	startSwipe(){
 		var controllerOptions = {enableGestures: true};
 		Leap.loop(controllerOptions, function(frame) {
@@ -57,10 +67,12 @@ export default class Fixed extends Component {
 				//Classify as right-left or up-down
 				if(isHorizontal){
 					if(gesture.direction[0] > 0){
-						console.log(gesture.direction[0]);
+						//console.log(gesture.direction[0]);
+						appRoot.moveHorizontal(gesture.direction[0])
 						swipeDirection = "right";
 					} else {
-						console.log(gesture.direction[0]);
+						//console.log(gesture.direction[0]);
+						appRoot.moveHorizontal(gesture.direction[0])
 						swipeDirection = "left";
 					}
 				} else { //vertical
@@ -91,13 +103,14 @@ export default class Fixed extends Component {
 	componentDidMount(){
 		console.log("loaded");
 		this.startSwipe();
+		//this.moveHorizontal();
 	}
 
 
 	render(){
 
 
-
+		console.log(this.state.rotate)
 
 		return (
 		
@@ -107,12 +120,12 @@ export default class Fixed extends Component {
                     id="camera"
                     camera
                     position="0 0 5"
-                    orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:3; maxDistance:100;" mouse-cursor=""></a-entity>
+                    orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:1.25;" mouse-cursor=""></a-entity>
 					<a-assets>
 						
 						<a-asset-item id="model" src={Modelpath}></a-asset-item>
 					</a-assets>
-					<a-entity id="target" obj-model="obj: #model" scale=".1 .1 .1" position="0 0 0" rotation="" material={this.state.color} ></a-entity>
+					<a-entity id="target" obj-model="obj: #model" scale=".2 .2 .2" position="0 0 0"  rotation={this.state.rotate} material={this.state.color} ></a-entity>
 
 
                 <a-sky color="#000000"></a-sky>
