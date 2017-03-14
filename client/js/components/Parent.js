@@ -52,6 +52,7 @@ export default class Parent extends Component {
 			this.constraint = new CANNON.LockConstraint(this.el.body, e.detail.body);
 			this.physics.world.addConstraint(this.constraint);
 			this.handID = e.detail.handID;
+			console.log(this.contraint)
 		},
 		onHoldStop: function (e) {
 			console.log("ACTIVATE hold stop");
@@ -60,6 +61,7 @@ export default class Parent extends Component {
 			this.physics.world.removeConstraint(this.constraint);
 			this.constraint = null;
 			this.handID = null;
+			console.log(this.contraint)
 		}
 		});
 

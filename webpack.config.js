@@ -53,7 +53,7 @@ module.exports = {
 			},
 			
 			{ 
-				test: /\.(png|woff|woff2|eot|ttf|svg|obj|mtl|dae|jpg)$/, 
+				test: /\.(png|tga|woff|woff2|eot|ttf|svg|obj|mtl|dae|jpg)$/, 
 				loader: 'url-loader?limit=100000' },
 
 			{

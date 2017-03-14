@@ -9,9 +9,10 @@ import THREE from 'three'
 import Physics from 'aframe-leap-hands'
 require('aframe-physics-system').registerAll();
 
-import Modelpath from '../../assets/images/iPhone_6.obj'
-import Matmodel from '../../assets/images/iPhone_6.mtl'
-
+import Modiphone6 from '../../assets/images/iPhone_6.obj'
+import Matiphone6 from '../../assets/images/iPhone_6.mtl'
+import Modiphone4 from '../../assets/images/iphone4s.obj'
+import Matiphone4 from '../../assets/images/iphone4s.mtl'
 
 
 
@@ -22,7 +23,8 @@ export default class Phone extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			color: "color: blue"
+			texture: Modiphone6,
+			model: Matiphone6
 		};
 	}
 
@@ -30,11 +32,11 @@ export default class Phone extends Component {
 
 
 	render(){
-
+		console.log(Matiphone6)
 
 		return (
 		
-            <a-scene>
+            <a-scene >
 
                 
                 <a-entity
@@ -43,8 +45,8 @@ export default class Phone extends Component {
                     position="0 0 5"
                     orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.25; minDistance:3; maxDistance:100;" mouse-cursor=""></a-entity>
 					<a-assets>
-						<a-asset-item id="modmtl" src={Matmodel}></a-asset-item>
-						<a-asset-item id="model" src={Modelpath}></a-asset-item>
+						<a-asset-item id="modmtl" src={Matiphone6}></a-asset-item>
+						<a-asset-item id="model" src={Modiphone6}></a-asset-item>
 					</a-assets>
 					<a-entity id="target" obj-model="obj: #model; mtl: #modmtl" scale=".3 .3 .3" position="0 0 0" ></a-entity>
 
