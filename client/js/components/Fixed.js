@@ -13,6 +13,7 @@ import Modelpath from '../../assets/images/polarbear-obj.obj'
 
 let swipeDirection;
 let appRoot;
+let animation;
 
 export default class Fixed extends Component {
 
@@ -21,9 +22,11 @@ export default class Fixed extends Component {
 		appRoot = this;
 		this.state = {
 			color: "color: white",
-			texture: carpet,
-			rotate: "0 100 0"
+			rotate: "0 0 0",
+			curPos: "0 0 0 "
 		};
+
+
 	}
 
 
@@ -37,19 +40,13 @@ export default class Fixed extends Component {
 		});
 	}
 
-	changeTexture() {
-		console.log("hello texture");
-		const texts = [grass, carpet];
-		this.setState({
-			texture: texts[Math.floor(Math.random()*texts.length)]
-		});
-	}
-
 	moveHorizontal(number){
 		console.log("moving left or right", number);
-		var lefrt = number*10;
+		var lefrt = number*100;
+		var modleft = lefrt++
 		this.setState({
-			rotate: "0 " + lefrt + " 5"
+			rotate: "0 " + lefrt + " 0",
+			curPos: "0 " + number + " 0"
 		})
 	}
 
@@ -90,28 +87,33 @@ export default class Fixed extends Component {
 		}
 
 		});
-			
-		// controller.on("gesture", function(gesture){
-		// //... handle gesture object
-		// console.log(gesture.direction)
-		// });
-	
-
 
 	}
 
 	componentDidMount(){
 		console.log("loaded");
+		animation = document.getElementById('animation');
+		animation.addEventListener('animationend', this.animationEnd);
+
+	
+		//setTimeout(function(){ 
+			//alert("Hello");
+			
+		//}, 6000);
 		this.startSwipe();
 		//this.moveHorizontal();
 	}
 
+	animationEnd(event) {
+		console.log('animation end: ', event)
+		animation.setAttribute('rotation', {x: 0, y: 200, z: 0}); 
+	}
 
 	render(){
 
 
-		console.log(this.state.rotate)
-
+		console.log("to", this.state.rotate)
+		console.log("from", this.state.curPos)
 		return (
 		
             <a-scene onClick={this.changeColor.bind(this)}>
@@ -121,13 +123,15 @@ export default class Fixed extends Component {
                     camera
                     position="0 0 5"
                     orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:1.25;" mouse-cursor=""></a-entity>
+					
 					<a-assets>
-						
 						<a-asset-item id="model" src={Modelpath}></a-asset-item>
 					</a-assets>
-					<a-entity id="target" obj-model="obj: #model" scale=".2 .2 .2" position="0 0 0"  rotation={this.state.rotate} material={this.state.color} ></a-entity>
 
-
+					<a-entity>
+						<a-entity id="target" obj-model="obj: #model" scale=".2 .2 .2" position="0 0 0" ></a-entity>
+						<a-animation id="animation" attribute="rotation" dur="1000" fill="forwards" to={this.state.rotate} repeat="indefinite"></a-animation>	
+					</a-entity>
                 <a-sky color="#000000"></a-sky>
 
             </a-scene>
