@@ -30,7 +30,7 @@ export default class Fixed extends Component {
 
 
 	changeColor() {
-		console.log("hello color");
+		//console.log("hello color");
 		const colors = ["color: white", "color: red", "color: yellow", "color: blue"];
 		this.setState({
 			color: colors[Math.floor(Math.random()*colors.length)]
@@ -39,13 +39,17 @@ export default class Fixed extends Component {
 
 
 	moveBear(hor, vert){
-		console.log("right or left", hor, "up or down", vert)
-		var leftright = hor*400;
-		var updown = vert*400;
+
+		//console.log("right or left", hor, "up or down", vert)
+		var leftright = hor;
+		var updown = vert;
+
+		//console.log("loaded ", this.orbit());
+		this.orbit().onManualDown(leftright,updown,0)
 		//Orbit.AFRAME.rotateLeft(hor);
-		this.setState({
-			rotate: updown + " " + leftright + " 0"
-		})
+		// this.setState({
+		// 	rotate: updown + " " + leftright + " 0"
+		// })
 	}
 
 
@@ -61,7 +65,7 @@ export default class Fixed extends Component {
 
 			//tap that shit
 			if(gesture.type == "screenTap" || "keyTap"){
-				console.log("tap it");
+				//console.log("tap it");
 				this.changeColor()
 			}
 
@@ -90,7 +94,7 @@ export default class Fixed extends Component {
 						swipeDirection = "down";
 					}                  
 				}
-				console.log(swipeDirection)
+				//console.log(swipeDirection)
 			}
 			}
 		}
@@ -98,8 +102,7 @@ export default class Fixed extends Component {
 	}
 
 	componentDidMount(){
-		console.log("loaded ", this.orbit());
-		this.orbit().onManualDown(1,2,3)
+
 		this.startSwipe();
 	}
 
@@ -119,7 +122,7 @@ export default class Fixed extends Component {
 					ref="camera"
                     camera
                     position="0 0 5"
-                    orbitcontrols="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:1.25;" mouse-cursor=""></a-entity>
+                    orbitcontrols="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.75;" mouse-cursor=""></a-entity>
 					
 					<a-assets>
 						<a-asset-item id="model" src={Modelpath}></a-asset-item>
