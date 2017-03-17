@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import AFRAME from 'aframe'
-
-import Modelpath from '../../assets/images/polarbear-obj.obj'
+import Matpath from '../../assets/images/coors_bottle.mtl'
+import Modelpath from '../../assets/images/coors_bottle.obj'
+import Bearpath from '../../assets/images/polarbear-obj.obj'
 import Model from './Model'
 import Skymain from './Skymain'
 import Floorpath from '../../assets/images/floor.jpg'
@@ -72,16 +73,23 @@ export default class Parent extends Component {
 						
 				
 						<a-asset-item id="model" src={Modelpath}></a-asset-item>
-						<a-entity holdable dynamic-body="shape: box" position="0.125 0.13 -0.5" rotation="0 0 0" obj-model="obj: #model;" color="blue" scale=".05 .05 .05" material="wireframe: false">
+						<a-asset-item id="modmlt" src={Matpath}></a-asset-item>
+						<a-entity holdable dynamic-body="shape: box" position="0.125 0.13 -1.5" rotation="0 75 0" obj-model="obj: #model; mtl: #modmlt" color="blue" scale=".009 .009 .009" material="wireframe: false">
 						</a-entity>
 	
+
+						<a-asset-item id="bearmodel" src={Bearpath}></a-asset-item>
+						<a-entity holdable dynamic-body="shape: box" position="0.125 0.13 -0.5" rotation="0 0 0" obj-model="obj: #bearmodel" color="blue" scale=".05 .05 .05" material="wireframe: false">
+						</a-entity>
+
+
 
 						<a-box holdable dynamic-body position="0.29 0.35 1.03" scale="0.5 0.5 0.5" color="yellow"></a-box>
 
 
 
 						
-						<a-entity camera position="0.30 0.46 0" rotation="0 90 0" wasd-controls look-controls>
+						<a-entity camera position="2 0.46 0" rotation="0 90 0" wasd-controls look-controls>
 							<a-entity leap-hand="hand: left; enablePhysics: true"></a-entity>
 							<a-entity leap-hand="hand: right; enablePhysics: true"></a-entity>
 						</a-entity>
@@ -89,7 +97,7 @@ export default class Parent extends Component {
 						<a-plane static-body color="#666" height="100" width="100" rotation="-90 0 0"></a-plane>
 
 						<Skymain/>						
-
+						
 
 					</a-scene>
 					

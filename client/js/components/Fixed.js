@@ -12,21 +12,18 @@ import Modelpath from '../../assets/images/polarbear-obj.obj'
 
 
 let swipeDirection;
-let appRoot;
 let animation;
 
 export default class Fixed extends Component {
 
 	constructor(props) {
 		super(props)
-		appRoot = this;
 		this.state = {
 			color: "color: white",
 			rotate: "0 0 0",
-			curPos: "0 0 0 "
+			curPos: "0 0 0 ",
+			orbitControls: null
 		};
-
-
 	}
 
 
@@ -40,24 +37,34 @@ export default class Fixed extends Component {
 		});
 	}
 
-	moveHorizontal(number){
-		console.log("moving left or right", number);
-		var lefrt = number*100;
-		var modleft = lefrt++
+
+	moveBear(hor, vert){
+		console.log("right or left", hor, "up or down", vert)
+		var leftright = hor*400;
+		var updown = vert*400;
+		//Orbit.AFRAME.rotateLeft(hor);
 		this.setState({
-			rotate: "0 " + lefrt + " 0",
-			curPos: "0 " + number + " 0"
+			rotate: updown + " " + leftright + " 0"
 		})
 	}
 
+
+
 	startSwipe(){
 		var controllerOptions = {enableGestures: true};
-		Leap.loop(controllerOptions, function(frame) {
+		Leap.loop(controllerOptions, (frame) => {
 
 		// Display Gesture object data
 		if (frame.gestures.length > 0) {
 			for (var i = 0; i < frame.gestures.length; i++) {
 			var gesture = frame.gestures[i];
+
+			//tap that shit
+			if(gesture.type == "screenTap" || "keyTap"){
+				console.log("tap it");
+				this.changeColor()
+			}
+
 			if(gesture.type == "swipe") {
 				//Classify swipe as either horizontal or vertical
 				var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
@@ -65,19 +72,21 @@ export default class Fixed extends Component {
 				if(isHorizontal){
 					if(gesture.direction[0] > 0){
 						//console.log(gesture.direction[0]);
-						appRoot.moveHorizontal(gesture.direction[0])
+						this.moveBear(gesture.direction[0], null)
 						swipeDirection = "right";
 					} else {
 						//console.log(gesture.direction[0]);
-						appRoot.moveHorizontal(gesture.direction[0])
+						this.moveBear(gesture.direction[0], null)
 						swipeDirection = "left";
 					}
 				} else { //vertical
 					if(gesture.direction[1] > 0){
-						console.log(gesture.direction[1]);
+						//console.log(gesture.direction[1]);
+						this.moveBear(null, gesture.direction[0])
 						swipeDirection = "up";
 					} else {
-						console.log(gesture.direction[1]);
+						//console.log(gesture.direction[1]);
+						this.moveBear(null, gesture.direction[0])
 						swipeDirection = "down";
 					}                  
 				}
@@ -85,52 +94,40 @@ export default class Fixed extends Component {
 			}
 			}
 		}
-
 		});
-
 	}
 
 	componentDidMount(){
-		console.log("loaded");
-		animation = document.getElementById('animation');
-		animation.addEventListener('animationend', this.animationEnd);
-
-	
-		//setTimeout(function(){ 
-			//alert("Hello");
-			
-		//}, 6000);
+		console.log("loaded ", this.orbit());
+		this.orbit().onManualDown(1,2,3)
 		this.startSwipe();
-		//this.moveHorizontal();
 	}
 
-	animationEnd(event) {
-		console.log('animation end: ', event)
-		animation.setAttribute('rotation', {x: 0, y: 200, z: 0}); 
+	orbit() {
+		return this.refs.camera.components.orbitcontrols;
 	}
+
 
 	render(){
 
-
-		console.log("to", this.state.rotate)
-		console.log("from", this.state.curPos)
 		return (
 		
-            <a-scene onClick={this.changeColor.bind(this)}>
+            <a-scene vr-mode-ui="enabled: true" >
 
                 <a-entity
                     id="camera"
+					ref="camera"
                     camera
                     position="0 0 5"
-                    orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:1.25;" mouse-cursor=""></a-entity>
+                    orbitcontrols="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:1.25;" mouse-cursor=""></a-entity>
 					
 					<a-assets>
 						<a-asset-item id="model" src={Modelpath}></a-asset-item>
 					</a-assets>
 
 					<a-entity>
-						<a-entity id="target" obj-model="obj: #model" scale=".2 .2 .2" position="0 0 0" ></a-entity>
-						<a-animation id="animation" attribute="rotation" dur="1000" fill="forwards" to={this.state.rotate} repeat="indefinite"></a-animation>	
+						<a-entity id="target" obj-model="obj: #model" scale=".2 .2 .2" position="0 0 0" rotation={this.state.rotate} material={this.state.color}></a-entity>
+						<a-animation attribute="rotation" dur="1000" fill="forwards" from="" to="" repeat="0"></a-animation>	
 					</a-entity>
                 <a-sky color="#000000"></a-sky>
 

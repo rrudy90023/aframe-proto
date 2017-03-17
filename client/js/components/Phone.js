@@ -36,7 +36,7 @@ export default class Phone extends Component {
 
 		return (
 		
-            <a-scene >
+            <a-scene vr-mode-ui="enabled: true">
 
                 
                 <a-entity
