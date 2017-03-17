@@ -38,15 +38,23 @@ export default class Fixed extends Component {
 	}
 
 
-	moveBear(hor, vert){
+	moveBear(pos){
 
 		//console.log("right or left", hor, "up or down", vert)
-		var leftright = hor;
-		var updown = vert;
+		//var leftright = Math.round(hor*100);
+		//var updown = Math.round(vert*100);
 
+
+		var xaxis = Math.round(pos[0]);
+		var yaxis = Math.round(pos[1]);
+		var zaxis = pos[2];
+
+		console.log(xaxis);
+		//console.log("leftright", leftright);
+		//console.log("updown", updown);
 		//console.log("loaded ", this.orbit());
-		this.orbit().onManualDown(leftright,updown,0)
-		//Orbit.AFRAME.rotateLeft(hor);
+		this.orbit().handleGestMoveRotate(xaxis,yaxis)
+
 		// this.setState({
 		// 	rotate: updown + " " + leftright + " 0"
 		// })
@@ -63,37 +71,41 @@ export default class Fixed extends Component {
 			for (var i = 0; i < frame.gestures.length; i++) {
 			var gesture = frame.gestures[i];
 
+			
 			//tap that shit
 			if(gesture.type == "screenTap" || "keyTap"){
-				//console.log("tap it");
 				this.changeColor()
 			}
 
 			if(gesture.type == "swipe") {
-				//Classify swipe as either horizontal or vertical
-				var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
-				//Classify as right-left or up-down
-				if(isHorizontal){
-					if(gesture.direction[0] > 0){
-						//console.log(gesture.direction[0]);
-						this.moveBear(gesture.direction[0], null)
-						swipeDirection = "right";
-					} else {
-						//console.log(gesture.direction[0]);
-						this.moveBear(gesture.direction[0], null)
-						swipeDirection = "left";
-					}
-				} else { //vertical
-					if(gesture.direction[1] > 0){
-						//console.log(gesture.direction[1]);
-						this.moveBear(null, gesture.direction[0])
-						swipeDirection = "up";
-					} else {
-						//console.log(gesture.direction[1]);
-						this.moveBear(null, gesture.direction[0])
-						swipeDirection = "down";
-					}                  
-				}
+				var currentPosition = gesture.position;
+
+				this.moveBear(currentPosition);
+				// console.log(currentPosition);
+				// //Classify swipe as either horizontal or vertical
+				// var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+				// //Classify as right-left or up-down
+				// if(isHorizontal){
+				// 	if(gesture.direction[0] > 0){
+				// 		//console.log(gesture.direction[0]);
+				// 		this.moveBear(gesture.direction[0], null)
+				// 		swipeDirection = "right";
+				// 	} else {
+				// 		//console.log(gesture.direction[0]);
+				// 		this.moveBear(gesture.direction[0], null)
+				// 		swipeDirection = "left";
+				// 	}
+				// } else { //vertical
+				// 	if(gesture.direction[1] > 0){
+				// 		//console.log(gesture.direction[1]);
+				// 		this.moveBear(null, gesture.direction[0])
+				// 		swipeDirection = "up";
+				// 	} else {
+				// 		//console.log(gesture.direction[1]);
+				// 		this.moveBear(null, gesture.direction[0])
+				// 		swipeDirection = "down";
+				// 	}                  
+				// }
 				//console.log(swipeDirection)
 			}
 			}
@@ -122,7 +134,7 @@ export default class Fixed extends Component {
 					ref="camera"
                     camera
                     position="0 0 5"
-                    orbitcontrols="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.75;" mouse-cursor=""></a-entity>
+                    orbitcontrols="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.125; rotateSpeed:0.15" mouse-cursor=""></a-entity>
 					
 					<a-assets>
 						<a-asset-item id="model" src={Modelpath}></a-asset-item>
