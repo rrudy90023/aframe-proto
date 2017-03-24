@@ -1,0 +1,112 @@
+{
+  "_args": [
+    [
+      "aframe-orbit-controls-component@^1.0.0",
+      "/Users/rudy/Documents/aframe/proto"
+    ]
+  ],
+  "_from": "aframe-orbit-controls-component@>=1.0.0 <2.0.0",
+  "_id": "aframe-orbit-controls-component@1.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/aframe-orbit-controls-component",
+  "_nodeVersion": "5.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/aframe-orbit-controls-component-1.0.0.tgz_1457735024826_0.687685138778761"
+  },
+  "_npmUser": {
+    "email": "jacob@subsumo.com",
+    "name": "jacobpdq"
+  },
+  "_npmVersion": "3.8.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "aframe-orbit-controls-component",
+    "raw": "aframe-orbit-controls-component@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://10.16.240.220/aframe-orbit-controls-component/-/aframe-orbit-controls-component-1.0.0.tgz",
+  "_shasum": "23d64322bf172a659ab0cf2f0871fcc4e8810b0f",
+  "_shrinkwrap": null,
+  "_spec": "aframe-orbit-controls-component@^1.0.0",
+  "_where": "/Users/rudy/Documents/aframe/proto",
+  "author": {
+    "email": "jacob@subsumo.com",
+    "name": "Jacob Friedman"
+  },
+  "bugs": {
+    "url": "https://github.com/subsumo/aframe-orbit-controls/issues"
+  },
+  "dependencies": {},
+  "description": "Orbiting Controls component for A-Frame VR",
+  "devDependencies": {
+    "aframe": "github:aframevr/aframe#dev",
+    "browserify": "^12.0.1",
+    "browserify-css": "^0.8.3",
+    "budo": "^7.1.0",
+    "chai": "^3.4.1",
+    "chai-shallow-deep-equal": "^1.3.0",
+    "ghpages": "0.0.3",
+    "inquirer": "^0.12.0",
+    "karma": "^0.13.15",
+    "karma-browserify": "^4.4.2",
+    "karma-chai-shallow-deep-equal": "0.0.4",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-mocha": "^0.2.1",
+    "karma-mocha-reporter": "^1.1.3",
+    "karma-sinon-chai": "^1.1.0",
+    "mocha": "^2.3.4",
+    "shelljs": "^0.6.0",
+    "webpack": "^1.12.9"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "23d64322bf172a659ab0cf2f0871fcc4e8810b0f",
+    "tarball": "http://10.16.240.220/aframe-orbit-controls-component/-/aframe-orbit-controls-component-1.0.0.tgz"
+  },
+  "gitHead": "5d0f421ed5dcdfe72d2bfd022f8d9476d1ed811c",
+  "homepage": "https://github.com/subsumo/aframe-orbit-controls#readme",
+  "keywords": [
+    "aframe",
+    "aframe-component",
+    "layout",
+    "aframe-vr",
+    "vr",
+    "aframe-layout",
+    "mozvr",
+    "webvr"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "jacob@subsumo.com",
+      "name": "jacobpdq"
+    }
+  ],
+  "name": "aframe-orbit-controls-component",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subsumo/aframe-orbit-controls.git"
+  },
+  "scripts": {
+    "build": "browserify examples/main.js -o examples/build.js",
+    "dev": "budo examples/main.js:build.js --dir examples --port 8000 --live --open",
+    "dist": "webpack index.js dist/aframe-orbit-controls-component.js && webpack -p index.js dist/aframe-orbit-controls-component.min.js",
+    "ghpages": "npm run preghpages && ghpages -p gh-pages",
+    "postpublish": "npm run dist",
+    "preghpages": "npm run build && rm -rf gh-pages && cp -r examples gh-pages",
+    "test": "karma start ./tests/karma.conf.js",
+    "unboil": "node scripts/unboil.js"
+  },
+  "version": "1.0.0"
+}

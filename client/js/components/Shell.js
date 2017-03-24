@@ -21,7 +21,7 @@ export default class Shell extends Component {
 	render(){
 
 		return (
-			<div>
+			<div style={{"position": "absolute", "width":"100%", "height":"100%"}}>
 				{(this.props.location.pathname === "/") ?
 				<Parent/> :
 				(this.props.location.pathname === "/fixed") ?

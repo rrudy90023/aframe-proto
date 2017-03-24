@@ -3,11 +3,8 @@ import ReactDOM from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import AFRAME from 'aframe'
 import Orbit from 'aframe-orbit-controls-component'
-import Leaphands from 'aframe-leap-hands';
 import THREE from 'three'
 
-import Physics from 'aframe-leap-hands'
-require('aframe-physics-system').registerAll();
 
 import Modiphone6 from '../../assets/images/iPhone_6.obj'
 import Matiphone6 from '../../assets/images/iPhone_6.mtl'
@@ -32,7 +29,7 @@ export default class Phone extends Component {
 
 
 	render(){
-		console.log(Matiphone6)
+		
 
 		return (
 		

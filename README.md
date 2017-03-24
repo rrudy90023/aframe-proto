@@ -1,8 +1,6 @@
 Aframe Prototype
 ==========
 
-The site showcases market research information for each market the client is in.
-
 The site is built on [React](https://facebook.github.io/react/).
  
  
