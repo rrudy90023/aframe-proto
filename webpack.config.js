@@ -74,9 +74,10 @@ module.exports = {
 
 
 		noParse:[
-			
+				
 			    /node_modules\/aframe\/dist\/aframe-master.js/,
 				/node_modules\/prebuiltlib\/dist\/build.js/
 		],
+		target: 'node'
 	}
 }

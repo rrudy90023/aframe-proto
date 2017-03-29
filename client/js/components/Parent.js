@@ -6,7 +6,7 @@ import Matpath from '../../assets/images/coors_bottle.mtl'
 import Modelpath from '../../assets/images/coors_bottle.obj'
 import Bearpath from '../../assets/images/polarbear-obj.obj'
 import Model from './Model'
-import Skymain from './Skymain'
+import Container from './Container'
 import Floorpath from '../../assets/images/floor.jpg'
 import Floor from './Floor'
 import Fadelight from './Fadelight'
@@ -96,8 +96,6 @@ export default class Parent extends Component {
 
 						<a-plane static-body color="#666" height="100" width="100" rotation="-90 0 0"></a-plane>
 
-						<Skymain/>						
-						
 
 					</a-scene>
 					

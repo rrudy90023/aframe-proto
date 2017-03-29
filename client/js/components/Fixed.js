@@ -8,11 +8,13 @@ import grass from '../../assets/images/grass.mtl'
 import carpet from '../../assets/images/carpet.mtl'
 import Modelpath from '../../assets/images/polarbear-obj.obj'
 
-
-
+//import Socket from 'socket.io'
+import { socketConnect, SocketProvider } from 'socket.io-react';
+import io from 'socket.io-client';
 
 let swipeDirection;
 let animation;
+let socket = io.connect(`http://localhost:3000`)
 
 export default class Fixed extends Component {
 
@@ -45,7 +47,7 @@ export default class Fixed extends Component {
 
 		console.log(xaxis, pos[0]);	
 
-		this.orbit().handleGestMoveRotate(xaxis,yaxis)
+		this.orbit().handleGestMoveRotate(xaxis,null)
 
 	}
 
@@ -79,7 +81,8 @@ export default class Fixed extends Component {
 
 			if(gesture.type == "swipe") {
 				var currentPosition = gesture.position;
-				this.swipeBear(currentPosition);
+				//this.swipeBear(currentPosition);
+				//this.changeColor();
 			}
 			}
 		}
@@ -104,21 +107,22 @@ export default class Fixed extends Component {
 	}
 
 	componentDidMount(){
-
-	  var opacity = document.getElementById('opacity');
-      var obj = {opacity: 1};
-
-	  setTimeout(function(){
-      var tween = new AFRAME.TWEEN.Tween(obj)
-        .to({opacity: 0}, 500)
-        .onUpdate(function () {
-          opacity.setAttribute('text', 'opacity', obj.opacity);
-        })
-        .start();
-
-
 		this.startSwipe();
-	  }.bind(this), 5000)
+		socket.emit('medellin')
+	//   var opacity = document.getElementById('opacity');
+    //   var obj = {opacity: 1};
+
+	//   setTimeout(function(){
+    //   var tween = new AFRAME.TWEEN.Tween(obj)
+    //     .to({opacity: 0}, 500)
+    //     .onUpdate(function () {
+    //       opacity.setAttribute('text', 'opacity', obj.opacity);
+    //     })
+    //     .start();
+
+
+	// 	this.startSwipe();
+	//   }.bind(this), 5000)
 	}
 
 	orbit() {
@@ -127,15 +131,11 @@ export default class Fixed extends Component {
 
 
 	render(){
-
+		console.log("receiver")
 		return (
-			
+
             <a-scene vr-mode-ui="enabled: true" onClick={this.changeColor.bind(this)}>
 
-			<a-entity mixin="marker" position="0 2.5 0.01"></a-entity>
-			<a-entity id="opacity" position="0 2.5 0"
-						text="width: 7; color: white; value: Use horizontal swipe gestures to move object left to right. Vertical gestures to move the object up/down">
-			</a-entity>
 
                 <a-entity
                     id="camera"
@@ -157,7 +157,7 @@ export default class Fixed extends Component {
                 <a-sky color="#000000"></a-sky>
 
             </a-scene>
-					
+		
 				
 
 		);

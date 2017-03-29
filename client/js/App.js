@@ -11,6 +11,7 @@ import { createHistory, useBasename } from 'history'
 //import webpackHotMiddleware from 'webpack-hot-middleware'
 //import webpackConfig from '../webpack.config' 
 import Shell from './components/Shell'
+import Container from './components/Container'
 import Fixed from './components/Fixed'
 import Phone from './components/Phone'
 import 'reset.styl/index.styl'
@@ -26,6 +27,7 @@ ReactDOM.render(
 		<Route path="/" component={Shell}/>
 		<Route path="fixed" component={Shell}/>
 		<Route path="phone" component={Shell}/>
+		<Route path="container" component={Shell}/>
 	</Router>,
 	document.getElementById('app')
 );
