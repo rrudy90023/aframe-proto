@@ -19,14 +19,18 @@ app.get('*', function (request, response){
 io.sockets.on('connection', socket => {
 
 	console.log('Socket Loaded and Ready')
-	
-	socket.on('nomames', socket => {
-		console.log("no mames");
+
+
+	socket.on('medellin', data => {
+		console.log('server', data.cord);
+		io.emit('loadx', data)
 	})
 
-	socket.on('medellin', socket=> {
-		console.log("Medellin, Paisa!!");
+	socket.on('splash', data => {
+		io.emit('colorcatcher', data)
 	})
+
+
 })
 
 //var server = app.listen(port);

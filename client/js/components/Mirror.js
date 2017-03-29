@@ -16,7 +16,7 @@ let swipeDirection;
 let animation;
 let socket = io.connect(`http://localhost:3000`)
 
-export default class Fixed extends Component {
+export default class Mirror extends Component {
 
 	constructor(props) {
 		super(props)
@@ -28,101 +28,44 @@ export default class Fixed extends Component {
 		};
 	}
 
-
-
-
-	changeColor() {
-		const colors = ["color: white", "color: red", "color: yellow", "color: blue"];
-		const kulers = colors[Math.floor(Math.random()*colors.length)];
-
-		socket.emit('splash', { mixer: kulers })
-		this.setState({
-			color: kulers
-		});
+	changeColor(klr) {
+			this.setState({
+				color: klr.mixer
+			});
 	}
-
 
 	moveBear(pos){
-		var xaxis = pos[0]*1000;
-		var yaxis = pos[1]*1000;
-		var zaxis = pos[2];
-
-		socket.emit('medellin', {cord: xaxis})
+		var xaxis = pos.cord;
+		console.log('socket', xaxis);	
 		this.orbit().handleGestMoveRotate(xaxis,null)
-
 	}
-
-
 
 	swipeBear(pos){
 		var xaxis = Math.round(pos[0]);
 		var yaxis = Math.round(pos[1]);
 		var zaxis = pos[2];
-
+		console.log(xaxis, pos[0]);	
 		this.orbit().handleGestMoveRotate(xaxis,yaxis)
-	}
 
-	startSwipe(){
-		var controllerOptions = {enableGestures: true};
-
-		Leap.loop(controllerOptions, (frame) => {
-
-		// Display Gesture object data
-		if (frame.gestures.length > 0) {
-			for (var i = 0; i < frame.gestures.length; i++) {
-			var gesture = frame.gestures[i];
-
-			//tap that shit
-			if(gesture.type == "screenTap" || "keyTap"){
-				this.changeColor()
-			}
-
-			if(gesture.type == "swipe") {
-				var currentPosition = gesture.position;
-				//this.swipeBear(currentPosition);
-				//this.changeColor();
-			}
-			}
-		}
-		});
-
-		var controller = Leap.loop((frame) =>{
-			if(frame.hands.length > 0)
-			{
-				var hand = frame.hands[0];
-				var position = hand.palmPosition;
-				var velocity = hand.palmVelocity;
-				var direction = hand.direction;
-
-				//console.log(position[0])
-				this.moveBear(position);
-			}
-		});
 	}
 
 	componentDidMount(){
-		this.startSwipe();
-	//   var opacity = document.getElementById('opacity');
-    //   var obj = {opacity: 1};
+		socket.on('loadx', data=> {
+			this.moveBear(data);
+		})
 
-	//   setTimeout(function(){
-    //   var tween = new AFRAME.TWEEN.Tween(obj)
-    //     .to({opacity: 0}, 500)
-    //     .onUpdate(function () {
-    //       opacity.setAttribute('text', 'opacity', obj.opacity);
-    //     })
-    //     .start();
-	// 	this.startSwipe();
-	//   }.bind(this), 5000)
+		socket.on('colorcatcher', data=> {
+			console.log('colors colors', data.mixer)
+			this.changeColor(data)
+		})
 	}
 
 	orbit() {
 		return this.refs.camera.components.orbitcontrols;
 	}
 
-
 	render(){
-		console.log("Fixed")
+		console.log("Mirror")
 		return (
 
             <a-scene vr-mode-ui="enabled: true" onClick={this.changeColor.bind(this)}>
@@ -144,8 +87,10 @@ export default class Fixed extends Component {
 					</a-entity>
 			
                 <a-sky color="#000000"></a-sky>
-
             </a-scene>
+		
+				
+
 		);
 	}
 }

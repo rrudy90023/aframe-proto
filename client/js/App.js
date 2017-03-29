@@ -12,6 +12,7 @@ import { createHistory, useBasename } from 'history'
 //import webpackConfig from '../webpack.config' 
 import Shell from './components/Shell'
 import Container from './components/Container'
+import Mirror from './components/Mirror'
 import Fixed from './components/Fixed'
 import Phone from './components/Phone'
 import 'reset.styl/index.styl'
@@ -28,6 +29,7 @@ ReactDOM.render(
 		<Route path="fixed" component={Shell}/>
 		<Route path="phone" component={Shell}/>
 		<Route path="container" component={Shell}/>
+		<Route path="mirror" component={Shell}/>
 	</Router>,
 	document.getElementById('app')
 );

@@ -8,7 +8,7 @@ import Parent from './Parent'
 import Fixed from './Fixed'
 import Phone from './Phone'
 import Container from './Container'
-
+import Mirror from './Mirror'
 
 
 //import Socket from 'socket.io'
@@ -47,6 +47,8 @@ export default class Shell extends Component {
 				<Phone/> :
 				(this.props.location.pathname === "/container") ?
 				<Container /> : 
+				(this.props.location.pathname === "/mirror") ?
+				<Mirror /> :
 				null
 				}
 			</div>
