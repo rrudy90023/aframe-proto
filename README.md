@@ -38,4 +38,8 @@ In another shell tab start the server:
 babel-node .
 ```
 
+In another shell tab start the node server
 
+```
+node index.js
+```
