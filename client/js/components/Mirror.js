@@ -14,7 +14,7 @@ import { socketConnect, SocketProvider } from 'socket.io-react';
 
 let swipeDirection;
 let animation;
-let socket = io.connect(`http://localhost:3000`)
+let socket = io.connect(`http://10.16.5.90:3000`)
 
 export default class Mirror extends Component {
 
