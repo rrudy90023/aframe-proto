@@ -8,7 +8,7 @@ import io from 'socket.io-client'
 import { socketConnect, SocketProvider } from 'socket.io-react';
 //import Socket from 'socket.io'
 
-let socket = io.connect(`http://localhost:3000`)
+//let socket = io.connect(`http://localhost:3000`)
 
 export default class Container extends Component {
 

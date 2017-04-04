@@ -9,7 +9,8 @@ import Fixed from './Fixed'
 import Phone from './Phone'
 import Container from './Container'
 import Mirror from './Mirror'
-
+import Floor from './Floor'
+import Controller from './Controller'
 
 //import Socket from 'socket.io'
 import { socketConnect, SocketProvider } from 'socket.io-react';
@@ -17,7 +18,7 @@ import io from 'socket.io-client';
 
 
 
-let socket = io.connect(`http://localhost:3000`)
+let socket = io.connect(`http://10.16.5.90:5000`)
 
 
 export default class Shell extends Component {
@@ -49,6 +50,10 @@ export default class Shell extends Component {
 				<Container /> : 
 				(this.props.location.pathname === "/mirror") ?
 				<Mirror /> :
+				(this.props.location.pathname === "/floor") ?
+				<Floor /> :
+				(this.props.location.pathname === "/controller") ?
+				<Controller /> :
 				null
 				}
 			</div>

@@ -15,6 +15,9 @@ import Container from './components/Container'
 import Mirror from './components/Mirror'
 import Fixed from './components/Fixed'
 import Phone from './components/Phone'
+import Floor from './components/Floor'
+import Controller from './components/Controller'
+
 import 'reset.styl/index.styl'
 import '../css/global.styl'
 
@@ -30,6 +33,8 @@ ReactDOM.render(
 		<Route path="phone" component={Shell}/>
 		<Route path="container" component={Shell}/>
 		<Route path="mirror" component={Shell}/>
+		<Route path="floor" component={Shell}/>
+		<Route path="controller" component={Shell}/>
 	</Router>,
 	document.getElementById('app')
 );
