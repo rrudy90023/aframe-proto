@@ -10,6 +10,7 @@ import Floorpath from '../../assets/images/floor.jpg'
 var physics = require('aframe-physics-system');
 physics.registerAll();
 import THREE from 'three'
+//import CANNON from 'cannon'
 import io from 'socket.io-client';
 import { socketConnect, SocketProvider } from 'socket.io-react';
 
@@ -39,6 +40,16 @@ export default class Floor extends Component {
 	}
 
 	componentDidMount(){
+		var gameover = document.querySelector('#finishline');
+
+		console.log(gameover)
+
+		gameover.addEventListener('collide', e=> {
+		console.log('Player has collided with body #' + e.detail.contact);
+			alert("You Win!!")
+		});
+
+
 		socket.emit('boardon', {init: "board ready"});
 
 		socket.on('initfloor', data=> {
@@ -65,7 +76,7 @@ export default class Floor extends Component {
 				<a-entity static-body position="0 0 0" rotation={this.state.rotation} scale="0.001 0.001 0.001" obj-model="obj: #model; mtl: #modmlt" color="blue" scale="1 1 1">
 				</a-entity>
 
-				
+				<a-box static-body id="finishline" color="tomato" depth="2" position="-19.86 1.10 20.13" scale="2.6 0.09 1"></a-box>	
 
 				<a-entity camera position="-0.2 34 28" rotation="-53 0 0" wasd-controls look-controls></a-entity>
 
